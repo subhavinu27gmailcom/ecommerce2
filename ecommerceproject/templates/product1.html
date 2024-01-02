@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+
+     {{products.description|truncatewords:155}}
+
+
+{% endblock metadescription %}
+{% block title %}
+
+{% if category %}
+     {{products.name}} -hello store
+
+{% endif %}
+{% endblock %}
+{% block content %}
+<div>
+    <div>
+        <p> <a href="{% url 'shopapp:allProdCat' %}">Home </a> | <a href="{{ products.category.get_url}}">{{products.category}}</a> | {{products.name}}</p>
+    </div>
+</div>
+<br>
+<div>
+    <div>
+        <div>
+            <img src="{{products.image.url}}" alt="{{products.name}}">
+        </div>
+    </div>
+    <div>
+        <div>
+            <h1> {{products.name}}</h1>
+            <p> {{products.price}}</p>
+            <p> product description </p>
+            <p> {{products.description}}</p>
+             {% if products.stock <= 0 %}
+            <p> out of stock </p>
+            {% else %}
+            <a href="">addto cart</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<nav>
+    <ul>
+        <li><a href="{% url 'shopapp:allProdCat' %}"> ALLproducts></a> </li>
+        {% for cat in links %}
+<li><a href="{{cat.get_url}}">{{cat.name}} </a></li>
+        {% endfor %}
+        <li>your cart() </li>
+
+    </ul>
+</nav>
